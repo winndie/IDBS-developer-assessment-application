@@ -20,7 +20,7 @@ import java.io.StringReader;
 public class CandidateSolution extends CandidateSolutionBase {
     @Override
     public DifficultyLevel getDifficultyLevel() {
-        return DifficultyLevel.LEVEL_2;
+        return DifficultyLevel.LEVEL_1;
     }
 
     private long getPower(int power, long baseValue) {
@@ -134,6 +134,8 @@ public class CandidateSolution extends CandidateSolutionBase {
     public String getAnswer() throws IDBSSolutionException {
 
         long answer;
+        char jsonObjPrefix = '{';
+        char jsonObjSuffix = '}';
         String jsonPrefix = "json:";
         String numericPrefix = "numeric:";
         String data = getDataForQuestion();
@@ -142,9 +144,9 @@ public class CandidateSolution extends CandidateSolutionBase {
             answer = getAnswerFromJson(data.substring(jsonPrefix.length()));
         } else if (data.startsWith(numericPrefix)) {
             answer = getAnswerFromNumeric(data.substring(numericPrefix.length()));
-        } else {
+        } else if (data.charAt(0) == jsonObjPrefix && data.charAt(data.length()-1) == jsonObjSuffix){
             answer = getAnswerFromJson(data);
-        }
+        } else {throw new IDBSSolutionException();}
 
         return Long.toString(answer);
     }
