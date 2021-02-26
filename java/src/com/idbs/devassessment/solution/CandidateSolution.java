@@ -23,7 +23,30 @@ public class CandidateSolution extends CandidateSolutionBase {
         return DifficultyLevel.LEVEL_1;
     }
 
-    private long getPower(int power, long baseValue) {
+    @Override
+    public String getAnswer() throws IDBSSolutionException {
+
+        long answer;
+        char jsonObjPrefix = '{';
+        char jsonObjSuffix = '}';
+        String jsonPrefix = "json:";
+        String numericPrefix = "numeric:";
+        String data = getDataForQuestion();
+
+        if (data.startsWith(jsonPrefix)) {
+            answer = getAnswerFromJson(data.substring(jsonPrefix.length()));
+        } else if (data.startsWith(numericPrefix)) {
+            answer = getAnswerFromNumeric(data.substring(numericPrefix.length()));
+        } else if (data.charAt(0) == jsonObjPrefix && data.charAt(data.length() - 1) == jsonObjSuffix) {
+            answer = getAnswerFromJson(data);
+        } else {
+            throw new IDBSSolutionException();
+        }
+
+        return Long.toString(answer);
+    }
+
+    long getPower(long baseValue, int power) {
 
         long answer = 0;
 
@@ -57,7 +80,7 @@ public class CandidateSolution extends CandidateSolutionBase {
         return answer;
     }
 
-    private long getMultiple(int multiplier, long baseValue) {
+    long getMultiple(long baseValue, int multiplier) {
 
         long answer = 0;
 
@@ -68,7 +91,7 @@ public class CandidateSolution extends CandidateSolutionBase {
         return answer;
     }
 
-    private long getAddSub(boolean isAdd, long a, long b) {
+    long getAddSub(boolean isAdd, long a, long b) {
 
         long answer;
 
@@ -81,7 +104,7 @@ public class CandidateSolution extends CandidateSolutionBase {
         return answer;
     }
 
-    private long getAnswerFromJson(String json) {
+    long getAnswerFromJson(String json) {
 
         long answer = 0;
 
@@ -102,14 +125,13 @@ public class CandidateSolution extends CandidateSolutionBase {
                     .getJsonObject(i).getString("action").equals("add");
 
             answer = getAddSub(isAdd, answer
-                    , getMultiple(multiplier
-                            , getPower(power, xValue)));
+                    , getMultiple(getPower(xValue, power), multiplier));
         }
 
         return answer;
     }
 
-    private long getAnswerFromNumeric(String data) {
+    long getAnswerFromNumeric(String data) {
 
         long answer = 0;
 
@@ -123,32 +145,9 @@ public class CandidateSolution extends CandidateSolutionBase {
             boolean isAdd = term.charAt(0) == '+';
 
             answer = getAddSub(isAdd, answer
-                    , getMultiple(multiplier
-                            , getPower(power, xValue)));
+                    , getMultiple(getPower(xValue, power), multiplier));
         }
 
         return answer;
     }
-
-    @Override
-    public String getAnswer() throws IDBSSolutionException {
-
-        long answer;
-        char jsonObjPrefix = '{';
-        char jsonObjSuffix = '}';
-        String jsonPrefix = "json:";
-        String numericPrefix = "numeric:";
-        String data = getDataForQuestion();
-
-        if (data.startsWith(jsonPrefix)) {
-            answer = getAnswerFromJson(data.substring(jsonPrefix.length()));
-        } else if (data.startsWith(numericPrefix)) {
-            answer = getAnswerFromNumeric(data.substring(numericPrefix.length()));
-        } else if (data.charAt(0) == jsonObjPrefix && data.charAt(data.length()-1) == jsonObjSuffix){
-            answer = getAnswerFromJson(data);
-        } else {throw new IDBSSolutionException();}
-
-        return Long.toString(answer);
-    }
-
 }
