@@ -19,6 +19,13 @@ public class CandidateSolution extends CandidateSolutionBase {
 
     @Override
     public String getAnswer() throws IDBSSolutionException {
-        return new Answer(getDataForQuestion()).getAnswerAsString();
+
+        String data = getDataForQuestion();
+
+        if(data == null || data.length()==0) {
+            throw new IDBSSolutionException();
+        }
+
+        return new Answer(data).getAnswerAsString();
     }
 }
