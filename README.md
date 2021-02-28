@@ -1,5 +1,5 @@
 # Level 1 & 2 passed
-# test is excluded in main branch
+# Test is excluded in main branch
 
 # IDBS Developer Assessment Application
 
