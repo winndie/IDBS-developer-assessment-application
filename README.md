@@ -1,3 +1,6 @@
+# Level 1 & 2 passed
+# test is excluded in main branch
+
 # IDBS Developer Assessment Application
 
 Welcome to the IDBS Developer Assessment Application github repository.

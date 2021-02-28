@@ -53,7 +53,7 @@ public class Answer {
     public String getAnswerAsString() {
         long answer = 0;
 
-        if(json != null){
+        if (json != null) {
 
             JsonReader reader = Json.createReader(new StringReader(json));
             JsonObject jsonObject = reader.readObject();
@@ -74,7 +74,7 @@ public class Answer {
                 answer = getAddSub(isAdd, answer
                         , getMultiple(getPower(xValue, power), multiplier));
             }
-        }else if(data != null){
+        } else if (data != null) {
 
             String[] terms = data.substring(data.indexOf("y") + 4).split("(?=[+-])");
             int xValue = Integer.parseInt(data.substring(4, data.indexOf(";")));
