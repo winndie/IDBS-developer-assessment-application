@@ -19,20 +19,4 @@ class AnswerTest {
         data = "numeric:x = 47; y = +2.x^2+5.x^1-9.x^4-4.x^0+7.x^3";
         Assertions.assertEquals("-43185719", new Answer(data).getAnswerAsString());
     }
-
-    @Test
-    void getPower() {
-        Assertions.assertEquals(Math.pow(3, 5), new Answer("").getPower(3, 5));
-    }
-
-    @Test
-    void getMultiple() {
-        Assertions.assertEquals(3 * 5, new Answer("").getMultiple(3, 5));
-    }
-
-    @Test
-    void getAddSub() {
-        Assertions.assertEquals(3 + 5, new Answer("").getAddSub(true, 3, 5));
-        Assertions.assertEquals(3 - 5, new Answer("").getAddSub(false, 3, 5));
-    }
 }

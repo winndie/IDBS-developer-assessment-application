@@ -14,7 +14,7 @@ import com.idbs.devassessment.core.IDBSSolutionException;
 public class CandidateSolution extends CandidateSolutionBase {
     @Override
     public DifficultyLevel getDifficultyLevel() {
-        return DifficultyLevel.LEVEL_2;
+        return DifficultyLevel.LEVEL_1;
     }
 
     @Override
