@@ -99,7 +99,7 @@ public class Answer {
         this.answerString = answerString;
     }
 
-    long getPower(long baseValue, int power) {
+    public long getPower(long baseValue, int power) {
 
         long answer = 0;
 
@@ -133,7 +133,7 @@ public class Answer {
         return answer;
     }
 
-    long getMultiple(long baseValue, int multiplier) {
+    public long getMultiple(long baseValue, int multiplier) {
 
         long answer = 0;
 
@@ -144,7 +144,7 @@ public class Answer {
         return answer;
     }
 
-    long getAddSub(boolean isAdd, long a, long b) {
+    public long getAddSub(boolean isAdd, long a, long b) {
 
         long answer;
 
