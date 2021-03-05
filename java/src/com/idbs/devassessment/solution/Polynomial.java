@@ -6,16 +6,16 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import java.io.StringReader;
 
-public class Answer {
+public class Polynomial {
 
     private final String jsonStart = "{";
     private final String jsonEnd = "}";
     private final String jsonPrefix = "json:";
     private final String numericPrefix = "numeric:";
 
-    private String json, data, answerString;
+    private String json, data;
 
-    public Answer(String questionData) {
+    public Polynomial(String questionData) {
 
         if (questionData.startsWith(jsonPrefix)) {
 
@@ -34,7 +34,7 @@ public class Answer {
 
     }
 
-    public String getAnswerAsString() {
+    public String getAsString() {
         long answer = 0;
 
         if (json != null) {
@@ -47,17 +47,7 @@ public class Answer {
             int xValue = jsonObject.getInt("xValue");
 
             for (int i = 0; i < terms.size(); i++) {
-
-                int power = terms
-                        .getJsonObject(i).getInt("power");
-                int multiplier = terms
-                        .getJsonObject(i).getInt("multiplier");
-                boolean isAdd = terms
-                        .getJsonObject(i).getString("action").equals("add");
-
-                answer = Maths.getAddSub(isAdd, answer,
-                        Maths.getMultiple(
-                                Maths.getPower(xValue, power), multiplier));
+                answer += new Monomial(terms.getJsonObject(i)).getAsLong(xValue);
             }
         } else if (data != null) {
 
@@ -65,20 +55,11 @@ public class Answer {
             int xValue = Integer.parseInt(data.substring(4, data.indexOf(";")));
 
             for (String term : terms) {
-
-                int power = Integer.parseInt(term.substring(term.indexOf("^") + 1));
-                int multiplier = Integer.parseInt(term.substring(1, term.indexOf(".")));
-                boolean isAdd = term.charAt(0) == '+';
-
-                answer = Maths.getAddSub(isAdd, answer,
-                        Maths.getMultiple(
-                                Maths.getPower(xValue, power), multiplier));
+                answer += new Monomial(term).getAsLong(xValue);
             }
         }
 
-        answerString = Long.toString(answer);
-
-        return answerString;
+        return Long.toString(answer);
     }
 
 }
