@@ -48,18 +48,10 @@ public class Monomial {
         } else if (power > 1) {
 
             answer = baseValue;
-
-            for (int i = 1; i < power; i++) {
-
-                long powerVal = 0;
-
-                for (int j = 1; j <= baseValue; j++) {
-                    if (j == 2) {
-                        powerVal = answer;
-                    }
-                    answer = answer + powerVal;
-                }
+            for (int i = 2; i <= power; i++) {
+                answer = getMultiple(answer,(int)baseValue);
             }
+
         }
         return answer;
     }
