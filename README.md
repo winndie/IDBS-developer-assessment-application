@@ -1,6 +1,6 @@
 ### This is an assessment project from [IDBS](https://www.idbs.com/)
 
-#### Project instruction is [here]()
+#### Project instruction is [here](https://github.com/winndie/idbs/blob/main/README.original.md)
 
 #### Technology Stack
 - Java8
