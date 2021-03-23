@@ -49,7 +49,7 @@ public class Monomial {
 
             answer = baseValue;
             for (int i = 2; i <= power; i++) {
-                answer = getMultiple(answer, (int) baseValue);
+                answer = getMultiple(answer,(int)baseValue);
             }
 
         }
@@ -67,7 +67,7 @@ public class Monomial {
     }
 
     public long getAsLong(long xValue) {
-        return Long.parseLong(sign + String.valueOf(getMultiple(
+        return Long.parseLong(sign+String.valueOf(getMultiple(
                 getPower(xValue, power), multiplier)));
     }
 }
