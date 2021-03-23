@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/idbs.iml" filepath="$PROJECT_DIR$/idbs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/idbs-main.iml" filepath="$PROJECT_DIR$/idbs-main.iml" />
     </modules>
   </component>
 </project>
