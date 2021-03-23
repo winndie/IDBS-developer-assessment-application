@@ -6,7 +6,7 @@
 - Java8
 - JUnit5.4
 
-### Follow these steps to run test
+#### Steps to run Junit test
 1. rename idbs.iml to idbs-main.iml
 2. rename idbs-test.iml to idbs.iml
 3. select file /java/test/PolynomialTest.java, right click, run.
