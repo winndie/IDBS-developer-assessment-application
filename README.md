@@ -1,8 +1,8 @@
-### This is an assessment project from [IDBS](https://www.idbs.com/)
+### This assessment project is given by [IDBS](https://www.idbs.com/)
 
-#### Project instruction is [here](https://github.com/winndie/idbs/blob/main/README.original.md)
+#### Project instruction is [here](./README.original.md)
 
-#### Technology Stack
+#### Technology stack used
 - Java8
 - JUnit5.4
 
