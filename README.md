@@ -1,8 +1,3 @@
-# Level 1 & 2 passed
-# Test is excluded in main branch
-
-# (original readme) IDBS Developer Assessment Application
-
 Welcome to the IDBS Developer Assessment Application github repository.
 
 The purpose for this repo is to provide access for ***invited candidates*** to our coding assessment application. 
